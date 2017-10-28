@@ -17,8 +17,8 @@ public class main {
         // TODO code application logic here
         //System.out.println("hello world");
         
-        Kruskal exe = new Kruskal();
-	exe.begin();
+        Kruskal kruskal = new Kruskal();
+	kruskal.begin();
     }
     
 }
