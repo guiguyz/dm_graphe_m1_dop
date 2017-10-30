@@ -127,13 +127,15 @@ public class Tsp {
             System.exit(-1);
             return;
         }
+        
+        //afficher les id, les coordonnées et les distances entre les villes
         for (int i = 0; i < villes.length; i++) {
 
             Ville ville = villes[i];
-            //System.out.println("id : "+ville.getId()+" coord : ("+ ville.x + "," + ville.y+")");
+            System.out.println("id : "+ville.getId()+" coord : ("+ ville.x + "," + ville.y+")");
             for (int j = 0; j<villes.length; j++) {
                 Ville ville1 = villes[j];
-                System.out.println("distance entre ville1 "+ville1.getId()+" et ville2 "+ville.getId()+" : "+ville1.distance(ville));
+                System.out.println("distance entre ville1 "+ville.getId()+" et ville2 "+ville1.getId()+" : "+ville1.distance(ville));
                 
             }
             
