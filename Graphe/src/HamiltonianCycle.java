@@ -31,6 +31,8 @@ public class HamiltonianCycle {
         Arrays.fill(path, -1);
 
         graph = g;
+        
+//        solve(0);
 
         try {
 
@@ -145,42 +147,5 @@ public class HamiltonianCycle {
 
     }
 
-    /**
-     * Main function *
-     */
-//    public static void main(String[] args) {
-//
-//        Scanner scan = new Scanner(System.in);
-//
-//        System.out.println("HamiltonianCycle Algorithm Test\n");
-//
-//        /**
-//         * Make an object of HamiltonianCycle class *
-//         */
-//        HamiltonianCycle hc = new HamiltonianCycle();
-//
-//        /**
-//         * Accept number of vertices *
-//         */
-//        System.out.println("Enter number of vertices\n");
-//
-//        int V = scan.nextInt();
-//
-//        /**
-//         * get graph *
-//         */
-//        System.out.println("\nEnter matrix\n");
-//
-//        int[][] graph = new int[V][V];
-//
-//        for (int i = 0; i < V; i++) {
-//            for (int j = 0; j < V; j++) {
-//                graph[i][j] = scan.nextInt();
-//            }
-//        }
-//
-//        hc.findHamiltonianCycle(graph);
-//
-//    }
 
 }

@@ -40,7 +40,8 @@ public class Ville implements Comparable<Ville> {
      * @return la distance au carre
      */
     public double distance2(Ville b) {
-        return Math.round((double) (x - b.x) * (x - b.x) + (y - b.y) * (y - b.y));
+        //return Math.round((double) (x - b.x) * (x - b.x) + (y - b.y) * (y - b.y));
+        return (x - b.x) * (x - b.x) + (y - b.y) * (y - b.y);
     }
 
     /**
@@ -58,7 +59,8 @@ public class Ville implements Comparable<Ville> {
      * @return Distance entre deux villes
      */
     public double distance(Ville b) {
-        return Math.round((double)Math.sqrt((x - b.x) * (x - b.x) + (y - b.y) * (y - b.y)));
+        //return Math.round((double)Math.sqrt((x - b.x) * (x - b.x) + (y - b.y) * (y - b.y)));
+        return Math.sqrt((x - b.x) * (x - b.x) + (y - b.y) * (y - b.y));
     }
 
     /**

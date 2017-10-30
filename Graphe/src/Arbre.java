@@ -329,7 +329,7 @@ public class Arbre {
         PriorityQueue<Ville> l = new PriorityQueue<Ville>(villes.length - 1);
 
         // Initialise chaque sommet
-        for (int i = 1; i < villes.length; i++) {
+        for (int i = 1; i < villes.length; i++) {//i=1
             // lambda[u] = infini
             villes[i].lambda = Double.MAX_VALUE;
             // Ajout a la liste des sommets non traites
@@ -340,6 +340,7 @@ public class Arbre {
         // Choix d'un sommet s de depart
         villes[1].lambda = 0;
 
+        System.out.println();
         // Tant que L (liste des sommets non traites) n'est pas vide
         while (!l.isEmpty()) {
             // Retirer de L le sommet u de plus petite marque lambda[u]
@@ -395,8 +396,7 @@ public class Arbre {
                     double distanceA = tournee[i].distance(tournee[j]);
 
                     // Distance (i+1, j+1)
-                    double distanceB = tournee[iplus1]
-                            .distance(tournee[jplus1]);
+                    double distanceB = tournee[iplus1].distance(tournee[jplus1]);
 
                     // On regarde s'il y a amelioration
                     if (distance1 + distance2 > distanceA + distanceB + 1E-10) {

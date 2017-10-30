@@ -106,7 +106,7 @@ public class Tsp {
     public static void main(String[] args) {
 
         // Obtient le nom du fichier TSP
-        String file = "data/xqf131.tsp";
+        String file = "data/dm.tsp";//xqg237 xqf131
         if (args.length == 1) {
             file = args[0];
         }
@@ -128,40 +128,74 @@ public class Tsp {
             System.exit(-1);
             return;
         }
+        
+        Arbre arb= new Arbre(villes);
+        
+        System.out.println(arb.deuxOpt());
+        
+        
+
+
+        
+
+       
+        //arb.deuxOpt();
+        
+        //int V = villes.length;
 
         //matrice de distance entre les villes
-        Matrice mat = new Matrice(villes);
+       // Matrice mat = new Matrice(villes,0);
+//        for (int i = 0; i < V; i++) {
+//            for (int j = 0; j < V; j++) {
+//                mat.set(i, j, 0);               
+//            }   
+//        }
 
-        int V = villes.length;
+        
 
-        int[][] graph = new int[V][V];
+        //int[][] graph = new int[V][V];
 
         //afficher les id, les coordonnées et les distances entre les villes
-        for (int i = 0; i < villes.length; i++) {
-            Ville ville = villes[i];
+//        for (int i = 0; i < V; i++) {
+//            Ville ville = villes[i];
 //            System.out.println("");
 //            System.out.println("ville numéro : " + ville.getId() + " de coordonnée : (" + ville.x + "," + ville.y + ")");
 //            System.out.println("");
-            for (int j = 0; j < villes.length; j++) {
-                Ville ville1 = villes[j];
-                Double val = ville1.distance(ville);
-                mat.set(i, j, val.intValue());
-                graph[i][j] = val.intValue();
-                //System.out.print(mat.get(i,j)+" ");
+//            for (int j = 0; j < V; j++) {
+//                Ville ville1 = villes[j];
+//                Double val = ville1.distance(ville);
+//                mat.set(i, j, val.intValue());
+                //graph[i][j] = val.intValue();
+                
                 //System.out.println("distance entre les coordonnées : (" + i+ "," + j + ")"+" = "+mat.get(i,j));
-            }
-            //System.out.println("");
-        }
+//            }
+//            
+//        }
+        
+//        for (int i = 0; i < V; i++) {
+//            for (int j = 0; j < V; j++) {
+//                System.out.print(mat.get(i,j)+" ");                
+//            }
+//            System.out.println("");            
+//        }
+
+//        for (int i = 0; i < graph.length; i++) {
+//            for (int j = 0; j < graph.length; j++) {
+//                System.out.print(graph[i][j] + " ");
+//            }
+//            System.out.println("");
+//        }
 
 //        Arbre arb = new Arbre(villes);
 //        System.out.println(arb.deuxOpt());
+//        System.out.println("");
 
         /**
          * Make an object of HamiltonianCycle class *
          */
-        HamiltonianCycle hc = new HamiltonianCycle();
-
-        hc.findHamiltonianCycle(graph);
+//        HamiltonianCycle hc = new HamiltonianCycle();
+//
+//        hc.findHamiltonianCycle(graph);
 
 //        System.out.println("test de la matrice");
 //        System.out.println(mat.get(0, 130));
