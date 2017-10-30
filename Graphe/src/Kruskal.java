@@ -25,28 +25,28 @@ import java.util.*;
  */
 public class Kruskal {
 
-    public static void main(String[] args) {
-        /* Take program arguments */
-        int seed, n;
-
-        try {
-            seed = Integer.parseInt(args[0]);
-            n = Integer.parseInt(args[1]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Usage: java Kruskal <seed> <number of vertices>");
-            return;
-        }
-
-        int ne = (n * (n - 1)) / 2;     // Number of edges in a complete graph
-
-        /* Run the tests for size n */
-        float test1 = randomEdgeWeightTest(seed, n, ne);
-        float test2 = randomVertexDistanceTest(seed, n, ne);
-
-        System.out.printf("Test results for size %d:\n", n);
-        System.out.printf("\trandom edge weight test: %f\n", test1);
-        System.out.printf("\trandom vertex distance test: %f\n", test2);
-    }
+//    public static void main(String[] args) {
+//        /* Take program arguments */
+//        int seed, n;
+//
+//        try {
+//            seed = Integer.parseInt(args[0]);
+//            n = Integer.parseInt(args[1]);
+//        } catch (ArrayIndexOutOfBoundsException e) {
+//            System.out.println("Usage: java Kruskal <seed> <number of vertices>");
+//            return;
+//        }
+//
+//        int ne = (n * (n - 1)) / 2;     // Number of edges in a complete graph
+//
+//        /* Run the tests for size n */
+//        float test1 = randomEdgeWeightTest(seed, n, ne);
+//        float test2 = randomVertexDistanceTest(seed, n, ne);
+//
+//        System.out.printf("Test results for size %d:\n", n);
+//        System.out.printf("\trandom edge weight test: %f\n", test1);
+//        System.out.printf("\trandom vertex distance test: %f\n", test2);
+//    }
 
 
     /*
