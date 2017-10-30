@@ -104,6 +104,7 @@ public class Tsp {
      * @param args Nom du fichier TSP a charger
      */
     public static void main(String[] args) {
+
         // Obtient le nom du fichier TSP
         String file = "data/xqf131.tsp";
         if (args.length == 1) {
@@ -127,24 +128,28 @@ public class Tsp {
             System.exit(-1);
             return;
         }
-        
+
+        //matrice de distance entre les villes
+        Matrice mat = new Matrice(villes);
+
         //afficher les id, les coordonnées et les distances entre les villes
         for (int i = 0; i < villes.length; i++) {
-
             Ville ville = villes[i];
-            System.out.println("id : "+ville.getId()+" coord : ("+ ville.x + "," + ville.y+")");
-            for (int j = 0; j<villes.length; j++) {
+            System.out.println("id : " + ville.getId() + " coord : (" + ville.x + "," + ville.y + ")");
+            for (int j = 0; j < villes.length; j++) {
                 Ville ville1 = villes[j];
-                System.out.println("distance entre ville1 "+ville.getId()+" et ville2 "+ville1.getId()+" : "+ville1.distance(ville));
-                
+                mat.set(i, j, ville1.distance(ville));
+                System.out.println("distance entre ville1 " + ville.getId() + " et ville2 " + ville1.getId() + " : " + ville1.distance(ville));
             }
-            
-
         }
+
+        System.out.println("test de la matrice");
+        System.out.println(mat.get(0, 130));
+        System.out.println(mat.get(129, 1));
+
 
         // Lance la relaxation
 //        Ville tournee[] = relaxation(villes);
-
         // Affiche la tournee
 //        System.out.println("Tournee:");
 //        for (Ville v : tournee) {
