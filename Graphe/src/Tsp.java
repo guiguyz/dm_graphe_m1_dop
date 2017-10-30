@@ -132,6 +132,10 @@ public class Tsp {
         //matrice de distance entre les villes
         Matrice mat = new Matrice(villes);
 
+        int V = villes.length;
+
+        int[][] graph = new int[V][V];
+
         //afficher les id, les coordonnées et les distances entre les villes
         for (int i = 0; i < villes.length; i++) {
             Ville ville = villes[i];
@@ -140,41 +144,28 @@ public class Tsp {
 //            System.out.println("");
             for (int j = 0; j < villes.length; j++) {
                 Ville ville1 = villes[j];
-                mat.set(i, j, ville1.distance(ville));
+                Double val = ville1.distance(ville);
+                mat.set(i, j, val.intValue());
+                graph[i][j] = val.intValue();
                 //System.out.print(mat.get(i,j)+" ");
                 //System.out.println("distance entre les coordonnées : (" + i+ "," + j + ")"+" = "+mat.get(i,j));
             }
             //System.out.println("");
         }
-        
+
 //        Arbre arb = new Arbre(villes);
 //        System.out.println(arb.deuxOpt());
-        
+
         /**
          * Make an object of HamiltonianCycle class *
          */
         HamiltonianCycle hc = new HamiltonianCycle();
-        
-        int V = villes.length;
-        
-        int[][] graph = new int[V][V];
-
-        for (int i = 0; i < V; i++) {
-            for (int j = 0; j < V; j++) {
-                //graph[i][j] = (int) mat.get(i,j);
-                Double d=(Double) mat.get(i,j);
-                graph[i][j] = d.intValue();
-            }
-        }
 
         hc.findHamiltonianCycle(graph);
 
 //        System.out.println("test de la matrice");
 //        System.out.println(mat.get(0, 130));
 //        System.out.println(mat.get(129, 1));
-        
-
-
         // Lance la relaxation
 //        Ville tournee[] = relaxation(villes);
         // Affiche la tournee
