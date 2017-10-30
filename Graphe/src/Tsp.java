@@ -103,7 +103,7 @@ public class Tsp {
 	 */
 	public static void main(String[] args) {
 		// Obtient le nom du fichier TSP
-		String file = "data/xqf131.tsp"; //"tsp/test.tsp";
+		String file = "data/xqf131.tsp";
 		if (args.length == 1)
 			file = args[0];
 		if (file == null || file.trim().isEmpty() || args.length > 1) {
