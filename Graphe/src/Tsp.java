@@ -141,11 +141,14 @@ public class Tsp {
             for (int j = 0; j < villes.length; j++) {
                 Ville ville1 = villes[j];
                 mat.set(i, j, ville1.distance(ville));
-                System.out.print(Math.round((double) mat.get(i,j))+" ");
+                System.out.print(mat.get(i,j)+" ");
                 //System.out.println("distance entre les coordonnées : (" + i+ "," + j + ")"+" = "+mat.get(i,j));
             }
             System.out.println("");
         }
+        
+        Arbre arb = new Arbre(villes);
+        System.out.println(arb.deuxOpt());
 
 //        System.out.println("test de la matrice");
 //        System.out.println(mat.get(0, 130));
