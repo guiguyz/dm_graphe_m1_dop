@@ -135,17 +135,21 @@ public class Tsp {
         //afficher les id, les coordonnées et les distances entre les villes
         for (int i = 0; i < villes.length; i++) {
             Ville ville = villes[i];
-            System.out.println("id : " + ville.getId() + " coord : (" + ville.x + "," + ville.y + ")");
+            System.out.println("");
+            System.out.println("ville numéro : " + ville.getId() + " de coordonnée : (" + ville.x + "," + ville.y + ")");
+            System.out.println("");
             for (int j = 0; j < villes.length; j++) {
                 Ville ville1 = villes[j];
                 mat.set(i, j, ville1.distance(ville));
-                System.out.println("distance entre ville1 " + ville.getId() + " et ville2 " + ville1.getId() + " : " + ville1.distance(ville));
+                System.out.print("distance entre les coordonnées : (" + i+ "," + j + ")"+" = "+mat.get(i,j));
+                System.out.println("");
             }
         }
 
-        System.out.println("test de la matrice");
-        System.out.println(mat.get(0, 130));
-        System.out.println(mat.get(129, 1));
+//        System.out.println("test de la matrice");
+//        System.out.println(mat.get(0, 130));
+//        System.out.println(mat.get(129, 1));
+        
 
 
         // Lance la relaxation
