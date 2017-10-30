@@ -141,14 +141,33 @@ public class Tsp {
             for (int j = 0; j < villes.length; j++) {
                 Ville ville1 = villes[j];
                 mat.set(i, j, ville1.distance(ville));
-                System.out.print(mat.get(i,j)+" ");
+                //System.out.print(mat.get(i,j)+" ");
                 //System.out.println("distance entre les coordonnées : (" + i+ "," + j + ")"+" = "+mat.get(i,j));
             }
-            System.out.println("");
+            //System.out.println("");
         }
         
-        Arbre arb = new Arbre(villes);
-        System.out.println(arb.deuxOpt());
+//        Arbre arb = new Arbre(villes);
+//        System.out.println(arb.deuxOpt());
+        
+        /**
+         * Make an object of HamiltonianCycle class *
+         */
+        HamiltonianCycle hc = new HamiltonianCycle();
+        
+        int V = villes.length;
+        
+        int[][] graph = new int[V][V];
+
+        for (int i = 0; i < V; i++) {
+            for (int j = 0; j < V; j++) {
+                //graph[i][j] = (int) mat.get(i,j);
+                Double d=(Double) mat.get(i,j);
+                graph[i][j] = d.intValue();
+            }
+        }
+
+        hc.findHamiltonianCycle(graph);
 
 //        System.out.println("test de la matrice");
 //        System.out.println(mat.get(0, 130));
