@@ -12,6 +12,7 @@ public class Kruskal {
 
     private final ArrayList<Vertex> vertices;
     private final ArrayList<Edge> edges;
+    private ArrayList<Edge> tree;
 
     public Kruskal(ArrayList<Vertex> vertices, ArrayList<Edge> edges){
         this.vertices=vertices;
@@ -21,7 +22,7 @@ public class Kruskal {
         DisjointSet d = new DisjointSet(vertices);
 
         /* Create a list of edges */
-        ArrayList<Edge> tree = new ArrayList<Edge>();
+        tree = new ArrayList<Edge>();
 
         /* Java's modified version of mergesort guarantees nlog(n) time here */
         Collections.sort(edges);
@@ -39,21 +40,10 @@ public class Kruskal {
                 d.union(u.getNode(), v.getNode());
             }
         }
-        
-      
-        float sum = 0;
-        
-
-        System.out.println("ARPM");
-        for (Edge e : tree) {
-            System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index+" "+(e.getV().getNode().parent!=null?e.getV().getNode().parent.index:""));
-            sum += e.getWeight();
-        }
-
-        System.out.println("");
-        System.out.println("taille de l'ARPM : "+sum);
-
-        
+    }
+    
+    public ArrayList<Edge> getARPM(){
+        return tree;        
     }
 
 }
