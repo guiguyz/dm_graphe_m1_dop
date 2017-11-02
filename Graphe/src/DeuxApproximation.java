@@ -16,10 +16,9 @@ public class DeuxApproximation {
     private ArrayList<Node> travelledNode;
 
     /**
-     * Charge un fichier TSP et lance la resolution du laboratoire
      *
-     * @param vertices ArrayList<Vertex>, ensemble des sommets du graphe
-     * @param tree ArrayList<Edge>, ARPM du graphe (généré par Kruskal ici)
+     * @param vertices ArrayList<Vertex> ensemble des sommets du graphe
+     * @param tree ArrayList<Edge> ARPM du graphe (généré par Kruskal ici)
      */
     DeuxApproximation(ArrayList<Vertex> vertices, ArrayList<Edge> tree) {
         this.tree = (ArrayList<Edge>) tree.clone();
@@ -55,14 +54,12 @@ public class DeuxApproximation {
             Edge e = new Edge(a, b, Vertex.euclideanDistance(a, b));
             edges.add(e);
             System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index);
-
         }
         
         System.out.println("");
         System.out.println("le cout du parcours du cycle 2-approximation est de ");
         System.out.println(Edge.sum(edges));
 
-        //return Edge.sum(edges);
     }
 
     /* 

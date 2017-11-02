@@ -4,7 +4,7 @@ import java.util.ArrayList;
 @SuppressWarnings("unchecked")
 
 /**
- * 
+ *
  * @author Benjamin Lemaitre
  * @author Guillaume Drouart
  */
@@ -27,7 +27,7 @@ public class main {
             return;
         }
 
-        /* Create a list of vertices */
+        // Liste de sommet du graphe
         ArrayList<Vertex> vertices = new ArrayList<Vertex>();
 
         try {
@@ -36,6 +36,7 @@ public class main {
             vertices = null;
             e.printStackTrace();
         }
+        
         // Quitte en cas d'erreur
         if (vertices == null) {
             System.err.println("Erreur lors de la lecture du fichier TSP");
@@ -45,7 +46,7 @@ public class main {
 
         int n = vertices.size();
 
-        /* Create a list of edges */
+        // Liste d'arête du graphe
         ArrayList<Edge> edges = new ArrayList<Edge>();
 
         for (int i = 0; i < n; i++) {
@@ -56,10 +57,10 @@ public class main {
                 Vertex a = vertices.get(i);
                 Vertex b = vertices.get(j);
 
-                /*
-         * Use a simplified distance formula to calculate the distance 
-         * between vertices a and b
-                 */
+                
+                // Un arête e contient deux sommet a et b et
+                // leur distance euclidienne entre eux
+                // qui est le poids de l'arête
                 Edge e = new Edge(a, b, Vertex.euclideanDistance(a, b));
                 edges.add(e);
             }
@@ -67,19 +68,8 @@ public class main {
 
         Kruskal kr = new Kruskal(vertices, edges);
         ArrayList<Edge> tree = kr.getARPM();
-        
-//        float sum = 0; 
-//        System.out.println("ARPM");
-//        for (Edge e : tree) {
-//            System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index);
-//            //System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index+" "+(e.getV().getNode().parent!=null?e.getV().getNode().parent.index:""));
-//            sum += e.getWeight();
-//        }
-//
-//        System.out.println("");
-//        System.out.println("taille de l'ARPM : "+sum);
-        
-        DeuxApproximation DeuxApp = new DeuxApproximation(vertices,tree);        
+
+        DeuxApproximation DeuxApp = new DeuxApproximation(vertices, tree);
         DeuxApp.run();
 
     }

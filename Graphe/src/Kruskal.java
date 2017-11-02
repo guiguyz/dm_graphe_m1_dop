@@ -4,8 +4,8 @@ import java.util.*;
 @SuppressWarnings("unchecked")
 
 /**
- * Ce programme exécute l'algorithme de Kruskal, 
- * en utilisant une structure de données efficace.
+ * Ce programme exécute l'algorithme de Kruskal, en utilisant une structure de
+ * données efficace.
  *
  * @author Benjamin Lemaitre
  * @author Guillaume Drouart
@@ -16,10 +16,10 @@ public class Kruskal {
     private final ArrayList<Edge> edges;
     private ArrayList<Edge> tree;
 
-    public Kruskal(ArrayList<Vertex> vertices, ArrayList<Edge> edges){
-        this.vertices=vertices;
-        this.edges=edges;
-        
+    public Kruskal(ArrayList<Vertex> vertices, ArrayList<Edge> edges) {
+        this.vertices = vertices;
+        this.edges = edges;
+
         /* Create the disjoint-set data structure */
         DisjointSet d = new DisjointSet(vertices);
 
@@ -28,7 +28,7 @@ public class Kruskal {
 
         /* Java's modified version of mergesort guarantees nlog(n) time here */
         Collections.sort(edges);
-        
+
         /* Kruskal's algorithm */
         for (Edge e : edges) {
             Vertex u = e.getU();
@@ -43,11 +43,22 @@ public class Kruskal {
             }
         }
     }
-    
-    public ArrayList<Edge> getARPM(){
-        return tree;        
+
+    public ArrayList<Edge> getARPM() {
+        
+        float sum = 0;
+        System.out.println("ARPM");
+        for (Edge e : tree) {
+            System.out.println(e.getU().getNode().index + " " + e.getV().getNode().index);
+            //System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index+" "+(e.getV().getNode().parent!=null?e.getV().getNode().parent.index:""));
+            sum += e.getWeight();
+        }
+
+        System.out.println("");
+        System.out.println("taille de l'ARPM : " + sum);
+        System.out.println("");
+        
+        return tree;
     }
 
 }
-
-
