@@ -5,11 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author GUY
@@ -59,18 +54,17 @@ public class Vertices {
 
             vertices.add(i, v);
 
-            //tab[i] = new Ville(id - 1, x, y);
             // S'assure que la ville ayant l'id "i" soit dans tab[i]
             if (id - 1 != i) {
                 br.close();
                 throw new IllegalArgumentException("Erreur de numerotation");
             }
             i++;
-            //System.out.println(tab[i]);
+
         }
         // Ferme le descripteur de fichier
         br.close();
-        // Retourne le tableau des villes
+        // Retourne l'ArrayList
         return vertices;
     }
 
