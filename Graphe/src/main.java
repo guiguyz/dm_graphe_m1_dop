@@ -75,15 +75,15 @@ public class main {
         float sum = 0;
         
 
-        System.out.println("ARPM");
-        for (Edge e : tree) {
-            System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index);
-            //System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index+" "+(e.getV().getNode().parent!=null?e.getV().getNode().parent.index:""));
-            sum += e.getWeight();
-        }
-
-        System.out.println("");
-        System.out.println("taille de l'ARPM : "+sum);
+//        System.out.println("ARPM");
+//        for (Edge e : tree) {
+//            System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index);
+//            //System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index+" "+(e.getV().getNode().parent!=null?e.getV().getNode().parent.index:""));
+//            sum += e.getWeight();
+//        }
+//
+//        System.out.println("");
+//        System.out.println("taille de l'ARPM : "+sum);
         
         DeuxApproximation DeuxApp = new DeuxApproximation(vertices,tree);
         DeuxApp.run();
