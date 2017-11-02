@@ -10,6 +10,9 @@ import java.util.List;
  * pour optimiser la combinaison de deux arbres,
  * en veillant à toujours attacher un arbre plus petit 
  * à la racine de l'arbre le plus grand.
+ *
+ * @author Benjamin Lemaitre
+ * @author Guillaume Drouart
  */
 class DisjointSet {
 

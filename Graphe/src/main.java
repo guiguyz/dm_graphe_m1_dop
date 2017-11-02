@@ -3,14 +3,10 @@ import java.util.ArrayList;
 
 @SuppressWarnings("unchecked")
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author gui
+ * 
+ * @author Benjamin Lemaitre
+ * @author Guillaume Drouart
  */
 public class main {
 
@@ -72,9 +68,7 @@ public class main {
         Kruskal kr = new Kruskal(vertices, edges);
         ArrayList<Edge> tree = kr.getARPM();
         
-        float sum = 0;
-        
-
+//        float sum = 0; 
 //        System.out.println("ARPM");
 //        for (Edge e : tree) {
 //            System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index);
@@ -86,7 +80,7 @@ public class main {
 //        System.out.println("taille de l'ARPM : "+sum);
         
         DeuxApproximation DeuxApp = new DeuxApproximation(vertices,tree);
-        DeuxApp.run();
+        System.out.println(DeuxApp.run());
 
     }
 

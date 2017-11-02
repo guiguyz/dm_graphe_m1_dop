@@ -5,6 +5,9 @@ import java.util.List;
 /*
  * Classe représentant une arête unique, avec des pointeurs vers les sommets. 
  * cela inclut également des facilités pour calculer les poids des arêtes.
+ *
+ * @author Benjamin Lemaitre
+ * @author Guillaume Drouart
  */
 class Edge implements Comparable {
 

@@ -3,6 +3,9 @@
  * structure.
  * Implementation of a node, to be used with the DisjointSet tree
  * structure.
+ *
+ * @author Benjamin Lemaitre
+ * @author Guillaume Drouart
  */
 class Node {
 

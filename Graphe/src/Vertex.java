@@ -3,6 +3,9 @@
  * Classe représentant un seul sommet, tenant un pointeur vers un noeud en
  * la structure de données disjoint-set. Contient également des fonctions de calcul
  * distances simples et euclidiennes.
+ *
+ * @author Benjamin Lemaitre
+ * @author Guillaume Drouart
  */
 class Vertex {
 

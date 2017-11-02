@@ -3,10 +3,12 @@ import java.util.*;
 
 @SuppressWarnings("unchecked")
 
-/*
+/**
  * Ce programme exécute l'algorithme de Kruskal, 
  * en utilisant une structure de données efficace.
  *
+ * @author Benjamin Lemaitre
+ * @author Guillaume Drouart
  */
 public class Kruskal {
 

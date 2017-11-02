@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 /**
- *
- * @author GUY
+ * 
+ * @author Benjamin Lemaitre
+ * @author Guillaume Drouart
  */
 public class Vertices {
 
