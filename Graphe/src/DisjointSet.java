@@ -41,11 +41,11 @@ class DisjointSet {
          * les appels futurs atteindront la racine plus rapidement.
          */
         current = n;
-        while (current != root) {
-            Node temp = current.parent;
-            current.parent = root;
-            current = temp;
-        }
+//        while (current != root) {
+//            Node temp = current.parent;
+//            current.parent = root;
+//            current = temp;
+//        }
 
         return root.index;
     }

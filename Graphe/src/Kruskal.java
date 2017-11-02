@@ -46,7 +46,7 @@ public class Kruskal {
 
         System.out.println("ARPM");
         for (Edge e : tree) {
-            System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index);
+            System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index+" "+(e.getV().getNode().parent!=null?e.getV().getNode().parent.index:""));
             sum += e.getWeight();
         }
 

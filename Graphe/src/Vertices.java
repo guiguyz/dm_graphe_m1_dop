@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,8 +21,7 @@ public class Vertices {
     public static ArrayList<Vertex> parse(String FILENAME) throws IOException {
         // Lecture du fichier
         BufferedReader br = new BufferedReader(new FileReader(FILENAME));
-
-        // ArrayList des villes
+        // ArrayList de Sommet
         ArrayList<Vertex> vertices = new ArrayList<Vertex>();
         // Ligne lue
         String strLine = null;
@@ -30,12 +30,7 @@ public class Vertices {
         while ((strLine = br.readLine()) != null && !strLine.equals("EOF")) {
             // Separe avec les espaces
             String[] element = strLine.split(" ");
-            // Recherche dans les commentaires, la dimension du fichier
-            if (element.length >= 1) {
-                if (element[0].startsWith("DIMENSION")) {
-                    final int taille = Integer.parseInt(element[element.length - 1]);
-                }
-            }
+
             // Ignore les autres commentaires
             if (element.length != 3 || !Pattern.matches("[0-9].*", element[0])) {
                 continue;

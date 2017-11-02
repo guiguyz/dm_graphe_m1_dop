@@ -47,11 +47,6 @@ public class main {
 
         int n = vertices.size();
 
-        // Stoque les distances entre les villes
-        for (int i = 0; i < n; i++) {
-            //System.out.println(vertices.get(i)+" "+vertices.get(i).getNode());
-        }
-
         /* Create a list of edges */
         ArrayList<Edge> edges = new ArrayList<Edge>();
 
