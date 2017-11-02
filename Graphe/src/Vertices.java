@@ -10,13 +10,12 @@ import java.util.regex.Pattern;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author GUY
  */
-public class Vertices implements Comparable<Vertices>{
-    
+public class Vertices {
+
     /**
      * Parse un fichier de la TSPLIB
      *
@@ -27,7 +26,7 @@ public class Vertices implements Comparable<Vertices>{
     public static ArrayList<Vertex> parse(String FILENAME) throws IOException {
         // Lecture du fichier
         BufferedReader br = new BufferedReader(new FileReader(FILENAME));
-        
+
         // ArrayList des villes
         ArrayList<Vertex> vertices = new ArrayList<Vertex>();
         // Ligne lue
@@ -55,13 +54,12 @@ public class Vertices implements Comparable<Vertices>{
             if (vertices == null) {
                 break;
             }
-            
-            Vertex v = new Vertex(x,y);
-            
+
+            Vertex v = new Vertex(x, y);
+
             vertices.add(i, v);
-            
+
             //tab[i] = new Ville(id - 1, x, y);
-            
             // S'assure que la ville ayant l'id "i" soit dans tab[i]
             if (id - 1 != i) {
                 br.close();
@@ -76,9 +74,4 @@ public class Vertices implements Comparable<Vertices>{
         return vertices;
     }
 
-    @Override
-    public int compareTo(Vertices o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
