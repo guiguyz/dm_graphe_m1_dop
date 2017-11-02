@@ -79,8 +79,8 @@ public class main {
 //        System.out.println("");
 //        System.out.println("taille de l'ARPM : "+sum);
         
-        DeuxApproximation DeuxApp = new DeuxApproximation(vertices,tree);
-        System.out.println(DeuxApp.run());
+        DeuxApproximation DeuxApp = new DeuxApproximation(vertices,tree);        
+        DeuxApp.run();
 
     }
 

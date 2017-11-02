@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 
+@SuppressWarnings("unchecked")
+
 /**
  * 
  * 
@@ -25,7 +27,7 @@ public class DeuxApproximation {
     }
 
     
-    public double run() {
+    public void run() {
 
         travelledNode = new ArrayList<>();//  liste des points une fois parcouru
 
@@ -38,6 +40,7 @@ public class DeuxApproximation {
 
         ArrayList<Edge> edges = new ArrayList<Edge>();
 
+        System.out.println("Voici le cycle 2-approximation du graphe");
         // On construit la liste des arêtes du cycle
         for (int i = 0; i < travelledNode.size(); i++) {
 
@@ -51,11 +54,15 @@ public class DeuxApproximation {
 
             Edge e = new Edge(a, b, Vertex.euclideanDistance(a, b));
             edges.add(e);
-            //System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index+" "+e.getWeight());
+            System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index);
 
         }
+        
+        System.out.println("");
+        System.out.println("le cout du parcours du cycle 2-approximation est de ");
+        System.out.println(Edge.sum(edges));
 
-        return Edge.sum(edges);
+        //return Edge.sum(edges);
     }
 
     /* 
