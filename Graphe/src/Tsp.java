@@ -103,35 +103,35 @@ public class Tsp {
      *
      * @param args Nom du fichier TSP a charger
      */
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
 
-        // Obtient le nom du fichier TSP
-        String file = "data/dm.tsp";//xqg237 xqf131
-        if (args.length == 1) {
-            file = args[0];
-        }
-        if (file == null || file.trim().isEmpty() || args.length > 1) {
-            System.out.println("Vous devez specifier un fichier TSP");
-            return;
-        }
-        // Parse les villes depuis le fichier TSP
-        Ville[] villes;
-        try {
-            villes = Ville.parse(file);
-        } catch (Exception e) {
-            villes = null;
-            e.printStackTrace();
-        }
-        // Quitte en cas d'erreur
-        if (villes == null) {
-            System.err.println("Erreur lors de la lecture du fichier TSP");
-            System.exit(-1);
-            return;
-        }
-        
-        Arbre arb= new Arbre(villes);
-        
-        System.out.println(arb.deuxOpt());
+//        // Obtient le nom du fichier TSP
+//        String file = "data/dm.tsp";//xqg237 xqf131
+//        if (args.length == 1) {
+//            file = args[0];
+//        }
+//        if (file == null || file.trim().isEmpty() || args.length > 1) {
+//            System.out.println("Vous devez specifier un fichier TSP");
+//            return;
+//        }
+//        // Parse les villes depuis le fichier TSP
+//        Ville[] villes;
+//        try {
+//            villes = Ville.parse(file);
+//        } catch (Exception e) {
+//            villes = null;
+//            e.printStackTrace();
+//        }
+//        // Quitte en cas d'erreur
+//        if (villes == null) {
+//            System.err.println("Erreur lors de la lecture du fichier TSP");
+//            System.exit(-1);
+//            return;
+//        }
+//        
+//        Arbre arb= new Arbre(villes);
+//        
+//        System.out.println(arb.deuxOpt());
         
         
 
@@ -207,5 +207,5 @@ public class Tsp {
 //        for (Ville v : tournee) {
 //            System.out.println(v);
 //        }
-    }
+//    }
 }

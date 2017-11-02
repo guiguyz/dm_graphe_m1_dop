@@ -4,26 +4,25 @@ import java.util.*;
 @SuppressWarnings("unchecked")
 
 /*
- * This program runs an empirical test of Kruskal's minimum spanning
- * tree algorithm, making use of an efficient disjoint-set data
- * structure.
+ * Ce programme exécute un test empirique de l'algorithme de Kruskal, 
+ * en utilisant une structure de données efficace.
  *
- * The program generates two random, complete graphs G_1 = (V_1, E_1) and
- * G_2 = (V_2, E_2) each consisting of n vertices and n-choose-2 edges.
- * G_1 is a graph whose edges E_1 are of random weight in the range [0, 1].
- * G_2 is a graph whose vertices V_2 are labeled with random coordinates in
- * the unit square, and E_2 consists of edges whose weights are the
- * Euclidean distances between any two vertices in V_2.
+ * Le programme génère deux graphiques aléatoires et complets G_1 = (V_1, E_1) et G_2 = (V_2, E_2) composés chacun de n sommets et de n-choix2 arêtes.
+ G_1 est un graphique dont les bords E_1 sont de poids aléatoire dans la plage[0,1].
+ G_2 est un graphique dont les sommets V_2 sont marqués avec des coordonnées aléatoires dans l'unité carrée, et E_2 se compose de bords dont les poids sont les distances euclidiennes entre deux sommets dans V_2.
  *
- * The program generates these graphs and runs Kruskal's minimum spanning
- * tree algorithm on them, printing the total weight of the tree for each
- * test.
+ *  Le programme génère ces graphiques et exécute la portée minimale de Kruskal.
+ sur eux, en imprimant le poids total de l'arbre pour chaque test.
  *
- * The program should be invoked from the command line with two integers:
- * the seed that should be used for the random number generator, and the
- * number of vertices in the randomly generated graphs.
+ * 
+Le programme doit être invoqué depuis la ligne de commande avec deux entiers:
+ la semence qui doit être utilisée pour le générateur de nombres aléatoires, et la méthode
+nombre de sommets dans les graphiques générés aléatoirement.
  */
 public class Kruskal {
+
+    private final ArrayList<Vertex> vertices;
+    private final ArrayList<Edge> edges;
 
 //    public static void main(String[] args) {
 //        /* Take program arguments */
@@ -48,6 +47,45 @@ public class Kruskal {
 //        System.out.printf("\trandom vertex distance test: %f\n", test2);
 //    }
 
+    public Kruskal(ArrayList<Vertex> vertices, ArrayList<Edge> edges){
+        this.vertices=vertices;
+        this.edges=edges;
+        
+        /* Create the disjoint-set data structure */
+        DisjointSet d = new DisjointSet(vertices);
+
+        /* Create a list of edges */
+        ArrayList<Edge> tree = new ArrayList<Edge>();
+
+        /* Java's modified version of mergesort guarantees nlog(n) time here */
+        Collections.sort(edges);
+        
+        /* Kruskal's algorithm */
+        for (Edge e : edges) {
+            Vertex u = e.getU();
+            Vertex v = e.getV();
+            //System.out.println("poids de l'arrete e : "+e.getWeight()+" entre (u,v) : ("+u.getNode().index+","+v.getNode().index+")");
+            if (d.find(u.getNode()) != d.find(v.getNode())) {
+                /* Vertices v and u are not in the same component */
+                tree.add(e);
+
+                /* Union them in the tree */
+                d.union(u.getNode(), v.getNode());
+            }
+        }
+        
+        for (Node n : d.rootNodes) {
+            if(n.parent!=null){
+                System.out.println(n.rank+" "+n.index+" "+n.parent.index); 
+                
+            }else{
+                System.out.println(n.rank+" "+n.index);
+            }
+                       
+        }
+
+        
+    }
 
     /*
    * Generates edges of a complete graph where each edge has a random
@@ -184,9 +222,9 @@ public class Kruskal {
 
 
 /*
- * Class representing a single vertex, holding a pointer to a node in
- * the disjoint-set data structure. Also contains facilities for calculating
- * simple and Euclidean distances.
+ * Classe représentant un seul sommet, tenant un pointeur vers un noeud en
+ * la structure de données disjoint-set. Contient également des fonctions de calcul
+ * distances simples et euclidiennes.
  */
 class Vertex {
 
@@ -218,9 +256,8 @@ class Vertex {
 
 
 /*
- * Class representing a single edge, holding pointers to the vertices
- * it connects. Also includes facilities for calculating sums of edge
- * weights.
+ * Classe représentant une arête unique, avec des pointeurs vers les sommets. 
+ * cela inclut également des facilités pour calculer les poids des arêtes.
  */
 class Edge implements Comparable {
 
@@ -278,13 +315,15 @@ class Edge implements Comparable {
 
 
 /*
+ * Implémentation d'un noeud, à utiliser avec l'arborescence DisjointSet
+ * structure.
  * Implementation of a node, to be used with the DisjointSet tree
  * structure.
  */
 class Node {
 
-    int rank;      // the approximate count of nodes below this node
-    int index;     // a unique index for each node in the tree
+    int rank;      // le nombre approximatif de noeuds sous ce noeud
+    int index;     // un index unique pour chaque noeud de l'arborescence
     Node parent;
 
     public Node(int r, int i, Node p) {
@@ -292,16 +331,18 @@ class Node {
         this.index = i;
         this.parent = p;
     }
+    
 }
 
 
 /*
- * A simple implementation of the disjoint-set data structure.
- * Elements of disjoint sets are represented in a tree, in
- * which each node references its parent.
- * A "union by rank" strategy is used to optimize the combination
- * of two trees, making sure to always attach a smaller tree to the
- * root of the larger tree.
+ * Une implémentation simple de la structure de données disjointe.
+ * Les éléments d'ensembles disjoints sont représentés dans un arbre,
+ * dans lequel chaque noeud fait référence à son parent.
+ * Une stratégie d'union par rang est utilisée
+ * pour optimiser la combinaison de deux arbres,
+ * en veillant à toujours attacher un arbre plus petit 
+ * à la racine de l'arbre le plus grand.
  */
 class DisjointSet {
 
@@ -311,15 +352,14 @@ class DisjointSet {
     ArrayList<Node> rootNodes;
 
     /*
-   * Returns the index of the set that n is currently in.
-   * The index of the root node of each set uniquely identifies the set.
-   * This is used to determine whether two elements are in the
-   * same set.
+     * Retourne l'index de l'ensemble dans lequel n est actuellement présent.
+     * L'index du noeud racine de chaque ensemble identifie de façon unique l'ensemble.
+     * Ceci est utilisé pour déterminer si deux éléments sont dans le même ensemble.
      */
     public int find(Node n) {
         Node current = n;
 
-        /* Ride the pointer up to the root node */
+        /* Monter le pointeur jusqu'au noeud racine  */
         while (current.parent != null) {
             current = current.parent;
         }
@@ -327,9 +367,11 @@ class DisjointSet {
         Node root = current;
 
         /*
-     * Ride the pointer up to the root node again, but make each node below
-     * a direct child of the root. This alters the tree such that future
-     * calls will reach the root more quickly.
+         * Remontez le pointeur jusqu'au noeud racine, 
+         * mais faires en sorte que chaque noeud soit au-dessous 
+         * d'un enfant directement à la racine.
+         * Ceci modifie l'arborescence de sorte que 
+         * les appels futurs atteindront la racine plus rapidement.
          */
         current = n;
         while (current != root) {
@@ -343,22 +385,22 @@ class DisjointSet {
 
 
     /*
-   * Combines the sets containing nodes i and j.
+     * Combine les ensembles contenant les noeuds i et j.
      */
     public void union(Node i, Node j) {
         int indexI = find(i);
         int indexJ = find(j);
 
-        /* Are these nodes already part of the same set? */
+        /* Ces noeuds font-ils déjà partie du même ensemble? */
         if (indexI == indexJ) {
             return;
         }
 
-        /* Get the root nodes of each set (this will run in constant time) */
+        /* Obtenir les noeuds racine de chaque ensemble (cela s'exécutera en temps constant) */
         Node a = this.rootNodes.get(indexI);
         Node b = this.rootNodes.get(indexJ);
 
-        /* Attach the smaller tree to the root of the larger tree */
+        /* Attachez l'arbre le plus petit à la racine de l'arbre le plus grand. */
         if (a.rank < b.rank) {
             a.parent = b;
         } else if (a.rank > b.rank) {
@@ -373,7 +415,7 @@ class DisjointSet {
 
 
     /*
-   * Takes a list of n vertices and creates n disjoint singleton sets.
+     * Prend une liste de n sommets et crée n ensembles disjoints singleton.
      */
     public void makeSets(List<Vertex> vertices) {
         for (Vertex v : vertices) {
@@ -383,7 +425,7 @@ class DisjointSet {
 
 
     /*
-   * Creates a singleton set containing one vertex.
+     * Crée un ensemble singleton contenant un sommet.
      */
     public void makeSet(Vertex vertex) {
         Node n = new Node(0, rootNodes.size(), null);
@@ -393,9 +435,19 @@ class DisjointSet {
         this.nodeCount++;
     }
 
+    /*
+     * Prend une liste de n sommets et appel makeSets sur cette liste.
+     */
     public DisjointSet(List<Vertex> vertices) {
         this.rootNodes = new ArrayList<Node>(vertices.size());
         makeSets(vertices);
+    }
+    
+    public void getVal(){
+   
+        
+        
+        
     }
 }
 
