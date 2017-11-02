@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-//@SuppressWarnings("unchecked")
+@SuppressWarnings("unchecked")
 
 /*
  * Ce programme exécute l'algorithme de Kruskal, 
@@ -44,16 +44,14 @@ public class Kruskal {
         float sum = 0;
         
 
+        System.out.println("ARPM");
         for (Edge e : tree) {
-//            if(e.getV().getNode().parent!=null){
-//                System.out.println(e.getV().getNode().parent.index);
-//            }
             System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index);
             sum += e.getWeight();
         }
 
-        /* Now return the sum */
-        System.out.println(sum);
+        System.out.println("");
+        System.out.println("taille de l'ARPM : "+sum);
 
         
     }

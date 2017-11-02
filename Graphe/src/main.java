@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.ListIterator;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,7 +28,7 @@ public class main {
             System.out.println("Vous devez specifier un fichier TSP");
             return;
         }
- 
+
         /* Create a list of vertices */
         ArrayList<Vertex> vertices = new ArrayList<Vertex>();
 
@@ -46,14 +45,6 @@ public class main {
             return;
         }
 
-
-//        ListIterator li = vertices.listIterator();
-//
-//
-//      while(li.hasNext()){
-//          System.out.println(li.next());
-//          
-//      }
         int n = vertices.size();
 
         // Stoque les distances entre les villes
@@ -65,7 +56,7 @@ public class main {
         ArrayList<Edge> edges = new ArrayList<Edge>();
 
         for (int i = 0; i < n; i++) {
-            for (int j = i+1; j < n; j++) {
+            for (int j = i + 1; j < n; j++) {
                 if (i == j) {
                     continue;
                 }
@@ -81,22 +72,8 @@ public class main {
             }
         }
 
-//        Arbre arb = new Arbre(villes);
-//
-//        System.out.println(arb.deuxOpt());
         Kruskal kr = new Kruskal(vertices, edges);
-        //System.out.println(kr);
 
     }
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String[] args) {
-//        // TODO code application logic here
-//        //System.out.println("hello world");
-//        
-//        //Kruskal kruskal = new Kruskal();
-//	//kruskal.begin();
-//    }
 }
