@@ -39,7 +39,9 @@ public class DeuxApproximation {
 
         ArrayList<Edge> edges = new ArrayList<Edge>();
 
+        System.out.println("");
         System.out.println("Voici le cycle 2-approximation du graphe");
+        System.out.println("");
         // On construit la liste des arêtes du cycle
         for (int i = 0; i < travelledNode.size(); i++) {
 
@@ -57,8 +59,7 @@ public class DeuxApproximation {
         }
         
         System.out.println("");
-        System.out.println("le cout du parcours du cycle 2-approximation est de ");
-        System.out.println(Edge.sum(edges));
+        System.out.println("Le cout du parcours du cycle 2-approximation est de : "+ Edge.sum(edges));
 
     }
 
@@ -75,7 +76,7 @@ public class DeuxApproximation {
         //pour chaque noeud on regarde si n est lié a ce noeud dans l'ARPM 
         // et si ce noeud n'est pas déja parcouru
         for (Edge e : tree) {
-            // Cas ou n est la première variables de l'edge
+            // Cas ou n est la première variables de l'arête
             if (e.getU().getNode() == n && !travelledNode.contains(e.getV().getNode())) {
                 travel(e.getV().getNode());
             }

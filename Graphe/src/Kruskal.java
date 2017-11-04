@@ -12,21 +12,19 @@ import java.util.*;
  */
 public class Kruskal {
 
-    private final ArrayList<Vertex> vertices;
-    private final ArrayList<Edge> edges;
     private ArrayList<Edge> tree;
 
     public Kruskal(ArrayList<Vertex> vertices, ArrayList<Edge> edges) {
-        this.vertices = vertices;
-        this.edges = edges;
 
-        /* Create the disjoint-set data structure */
-        DisjointSet d = new DisjointSet(vertices);
+        // Créer la partition d’un ensemble 
+        UnionFind d = new UnionFind(vertices);
 
-        /* Create a list of edges */
+        // On crée une ArrayList d'arête pour stocker l'ARPM
         tree = new ArrayList<Edge>();
 
-        /* Java's modified version of mergesort guarantees nlog(n) time here */
+        /* 
+        Java's modified version of mergesort guarantees nlog(n) time here */
+        // On trie les sommets 
         Collections.sort(edges);
 
         /* Kruskal's algorithm */
@@ -47,7 +45,9 @@ public class Kruskal {
     public ArrayList<Edge> getARPM() {
         
         float sum = 0;
-        System.out.println("ARPM");
+        System.out.println("");
+        System.out.println("Voic l'ARPM Généré par Kruskal : ");
+        System.out.println("");
         for (Edge e : tree) {
             System.out.println(e.getU().getNode().index + " " + e.getV().getNode().index);
             //System.out.println(e.getU().getNode().index+" "+e.getV().getNode().index+" "+(e.getV().getNode().parent!=null?e.getV().getNode().parent.index:""));
@@ -55,8 +55,8 @@ public class Kruskal {
         }
 
         System.out.println("");
-        System.out.println("taille de l'ARPM : " + sum);
-        System.out.println("");
+        System.out.println("Le cout des éléments de l'ARPM est de : " + sum);
+
         
         return tree;
     }

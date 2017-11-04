@@ -14,12 +14,21 @@ import java.util.List;
  * @author Benjamin Lemaitre
  * @author Guillaume Drouart
  */
-class DisjointSet {
+class UnionFind {
 
     private int nodeCount = 0;
     private int setCount = 0;
 
     ArrayList<Node> rootNodes;
+    
+    /*
+     * Prend une liste de n sommets et crée n ensembles sur cette liste.
+     * @param vertices ArrayList<Vertex> ensemble des sommets du graphe
+     */
+    public UnionFind(List<Vertex> vertices) {
+        this.rootNodes = new ArrayList<Node>(vertices.size());
+        makeSets(vertices);
+    }
 
     /*
      * Retourne l'index de l'ensemble dans lequel n est actuellement présent.
@@ -29,7 +38,9 @@ class DisjointSet {
     public int find(Node n) {
         Node current = n;
 
-        /* Monter le pointeur jusqu'au noeud racine  */
+        /* 
+         * Monter le pointeur jusqu'au noeud racine 
+         */
         while (current.parent != null) {
             current = current.parent;
         }
@@ -85,7 +96,8 @@ class DisjointSet {
 
 
     /*
-     * Prend une liste de n sommets et crée n ensembles disjoints singleton.
+     * Prendre une liste de n sommets et 
+     * faire les n ensembles disjoints singleton.
      */
     public void makeSets(List<Vertex> vertices) {
         for (Vertex v : vertices) {
@@ -97,7 +109,7 @@ class DisjointSet {
     /*
      * Crée un ensemble singleton contenant un sommet.
      */
-    public void makeSet(Vertex vertex) {
+    public void makeSet(Vertex vertex) {//makeset
         Node n = new Node(0, rootNodes.size(), null);
         vertex.setNode(n);
         this.rootNodes.add(n);
@@ -105,15 +117,6 @@ class DisjointSet {
         this.nodeCount++;
     }
 
-    /*
-     * Prend une liste de n sommets et appel makeSets sur cette liste.
-     */
-    public DisjointSet(List<Vertex> vertices) {
-        this.rootNodes = new ArrayList<Node>(vertices.size());
-        makeSets(vertices);
-    }
+    
 
-    public void getVal() {
-
-    }
 }

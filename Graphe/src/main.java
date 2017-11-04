@@ -11,7 +11,11 @@ import java.util.ArrayList;
 public class main {
 
     /**
-     * Charge un fichier TSP et lance la resolution du laboratoire
+     * Charge un fichier TSP 
+     * Crée une ArrayList des sommets du fichier
+     * Crée une ArrayList d'arête des sommets du fichier
+     * Instancie et execute Kruskal
+     * Instancie et execute DeuxApproximation
      *
      * @param args Nom du fichier TSP a charger
      */
@@ -66,9 +70,11 @@ public class main {
             }
         }
 
+        // Générer un ARPM avec Kruskal
         Kruskal kr = new Kruskal(vertices, edges);
         ArrayList<Edge> tree = kr.getARPM();
 
+        // Générer une deux-approximation sur l'ARPM
         DeuxApproximation DeuxApp = new DeuxApproximation(vertices, tree);
         DeuxApp.run();
 
