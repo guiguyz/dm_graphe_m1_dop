@@ -11,7 +11,7 @@ class Node {
 
     int rank;      // le nombre approximatif de noeuds sous ce noeud
     int index;     // un index unique pour chaque noeud de l'arborescence
-    Node parent;
+    Node parent;   
 
     public Node(int r, int i, Node p) {
         this.rank = r;

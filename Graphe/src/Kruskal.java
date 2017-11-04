@@ -22,9 +22,7 @@ public class Kruskal {
         // On crée une ArrayList d'arête pour stocker l'ARPM
         tree = new ArrayList<Edge>();
 
-        /* 
-        Java's modified version of mergesort guarantees nlog(n) time here */
-        // On trie les sommets 
+        // On trie les arêtes par ordre croissant (complexité en nlog(n))
         Collections.sort(edges);
 
         /* Kruskal's algorithm */
@@ -37,7 +35,7 @@ public class Kruskal {
                 tree.add(e);
 
                 /* Union them in the tree */
-                d.union(u.getNode(), v.getNode());
+                d.union(u.getNode(), v.getNode());// getNode Parocurs de l'arbre
             }
         }
     }
@@ -46,7 +44,7 @@ public class Kruskal {
         
         float sum = 0;
         System.out.println("");
-        System.out.println("Voic l'ARPM Généré par Kruskal : ");
+        System.out.println("Voici l'ARPM Généré par Kruskal : ");
         System.out.println("");
         for (Edge e : tree) {
             System.out.println(e.getU().getNode().index + " " + e.getV().getNode().index);

@@ -99,7 +99,7 @@ class UnionFind {
      * Prendre une liste de n sommets et 
      * faire les n ensembles disjoints singleton.
      */
-    public void makeSets(List<Vertex> vertices) {
+    public void makeSets(List<Vertex> vertices) {//creer ensemble
         for (Vertex v : vertices) {
             makeSet(v);
         }
@@ -109,7 +109,7 @@ class UnionFind {
     /*
      * Crée un ensemble singleton contenant un sommet.
      */
-    public void makeSet(Vertex vertex) {//makeset
+    public void makeSet(Vertex vertex) {
         Node n = new Node(0, rootNodes.size(), null);
         vertex.setNode(n);
         this.rootNodes.add(n);
