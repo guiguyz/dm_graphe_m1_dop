@@ -37,18 +37,30 @@ class Edge implements Comparable {
         this.weight = w;
     }
 
+    /**
+     * Acceseur
+     */
     public float getWeight() {
         return this.weight;
     }
 
+    /**
+     * Mutateur
+     */
     public void setWeight(float w) {
         this.weight = w;
     }
 
+    /**
+     * Acceseur
+     */
     public Vertex getU() {
         return this.u;
     }
 
+    /**
+     * Acceseur
+     */
     public Vertex getV() {
         return this.v;
     }
@@ -71,6 +83,11 @@ class Edge implements Comparable {
         }
     }
 
+    /**
+     *
+     * @param edges une liste d'Edge
+     * @return la somme des poids des edges de la liste
+     */
     public static float sum(List<Edge> edges) {
         float sum = 0;
 

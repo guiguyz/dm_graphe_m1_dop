@@ -24,10 +24,16 @@ class Vertex {
         this.y = y;
     }
 
+    /**
+     * Mutateur
+     */
     public void setNode(Node n) {
         this.n = n;
     }
 
+    /**
+     * Acceseur
+     */
     public Node getNode() {
         return this.n;
     }

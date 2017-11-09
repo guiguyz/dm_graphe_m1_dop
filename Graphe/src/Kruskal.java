@@ -4,8 +4,8 @@ import java.util.*;
 @SuppressWarnings("unchecked")
 
 /**
- * Ce programme exécute l'algorithme de Kruskal, en utilisant une structure de
- * données efficace.
+ * Ce programme exï¿½cute l'algorithme de Kruskal, en utilisant une structure de
+ * donnï¿½es efficace.
  *
  * @author Benjamin Lemaitre
  * @author Guillaume Drouart
@@ -19,44 +19,44 @@ public class Kruskal {
      * Constructeur logique.
      *
      * @param vertices ArrayList de Vertex (sommets).
-     * @param edges ArrayList de Edges (arêtes).
+     * @param edges ArrayList de Edges (arï¿½tes).
      */
     public Kruskal(ArrayList<Vertex> vertices, ArrayList<Edge> edges) {
 
-        // Créer la partition d'un ensemble 
+        // CrÃ©er la partition d'un ensemble 
         UnionFind d = new UnionFind(vertices);
 
-        // On crée une ArrayList d'arète pour stocker l'ARPM
+        // On crÃ©e une ArrayList d'arï¿½te pour stocker l'ARPM
         tree = new ArrayList<Edge>();
 
-        // On trie les arêtes pour pouvoir les traiter 
-        // par ordre croissant de poids, car les arêtes de
-        // poids faible sont plus intéressantes(complexité en nlog(n))
+        // On trie les arÃªtes pour pouvoir les traiter 
+        // par ordre croissant de poids, car les arï¿½tes de
+        // poids faible sont plus intï¿½ressantes(complexitï¿½ en nlog(n))
         Collections.sort(edges);
 
-        // Dans l'ordre des poids des arêtes, on va regarder 
-        // si l'arête est à ajouter à l'ensemble
+        // Dans l'ordre des poids des arï¿½tes, on va regarder 
+        // si l'arï¿½te est Ã  ajouter Ã  l'ensemble
         for (Edge e : edges) {
             Vertex u = e.getU();
             Vertex v = e.getV();
-            // On vérifie que l'arête ne relie pas deux sommets 
-            // d'un même ensemble, car le résultat attendu est un ARPM 
-            // et une telle arête créerait un cycle : 
+            // On vÃ©rifie que l'arÃªte ne relie pas deux sommets 
+            // d'un mÃªme ensemble, car le rï¿½sultat attendu est un ARPM 
+            // et une telle arÃªte crÃ©erait un cycle : 
             // ce ne serait donc plus un arbre.
             if (d.find(u.getNode()) != d.find(v.getNode())) {
-                // Les sommets v et u ne sont pas dans le même composant
-                // Si les deux sommets sont déjà dans le même ensemble, 
-                // ils le sont grâce à des arrête de poids plus faible, 
+                // Les sommets v et u ne sont pas dans le mÃªme composant
+                // Si les deux sommets sont dÃ©jÃ  dans le mÃªme ensemble, 
+                // ils le sont grace Ã  des arÃªte de poids plus faible, 
                 // car on les traite par ordre croissant 
                 // donc il est inutile de chercher 
-                // à remplacer une autre arrête par celle-là.
+                // Ã  remplacer une autre arÃªte par celle-lÃ .
                 
-                // L'arrête est à ajouter à l'ARPM 
-                // donc on l'ajoute à l'ensemble E
+                // L'arÃªte est Ã  ajouter Ã  l'ARPM 
+                // donc on l'ajoute Ã  l'ensemble E
                 tree.add(e);
 
-                // On a gardé l'arête entre u et v donc 
-                // on fusionne les ensembles pour représenter ce lien
+                // On a gardÃ© l'arÃªte entre u et v donc 
+                // on fusionne les ensembles pour reprÃ©senter ce lien
                 d.union(u.getNode(), v.getNode());
             }
         }
@@ -66,13 +66,13 @@ public class Kruskal {
     /**
      * Accesseur.
      *
-     * @return On retourne l'ARPM (et on affiche ses arêtes et son coût)
+     * @return On retourne l'ARPM (et on affiche ses arÃªtes et son coÃ»t)
      */
     public ArrayList<Edge> getARPM() {
         
         float sum = 0;
         System.out.println("");
-        System.out.println("Voici l'ARPM Généré par Kruskal : ");
+        System.out.println("Voici l'ARPM Gï¿½nï¿½rï¿½ par Kruskal : ");
         System.out.println("");
         for (Edge e : tree) {
             System.out.println(e.getU().getNode().index + " " + e.getV().getNode().index);
