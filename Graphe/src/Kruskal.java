@@ -19,7 +19,7 @@ public class Kruskal {
      * Constructeur logique.
      *
      * @param vertices ArrayList de Vertex (sommets).
-     * @param edges ArrayList de Edges (ar�tes).
+     * @param edges ArrayList de Edges (arêtes).
      */
     public Kruskal(ArrayList<Vertex> vertices, ArrayList<Edge> edges) {
 
@@ -31,16 +31,16 @@ public class Kruskal {
 
         // On trie les arêtes pour pouvoir les traiter 
         // par ordre croissant de poids, car les ar�tes de
-        // poids faible sont plus int�ressantes(complexit� en nlog(n))
+        // poids faible sont plus intéressantes(complexit� en nlog(n))
         Collections.sort(edges);
 
-        // Dans l'ordre des poids des ar�tes, on va regarder 
-        // si l'ar�te est à ajouter à l'ensemble
+        // Dans l'ordre des poids des arêtes, on va regarder 
+        // si l'arête est à ajouter à l'ensemble
         for (Edge e : edges) {
             Vertex u = e.getU();
             Vertex v = e.getV();
             // On vérifie que l'arête ne relie pas deux sommets 
-            // d'un même ensemble, car le r�sultat attendu est un ARPM 
+            // d'un même ensemble, car le résultat attendu est un ARPM 
             // et une telle arête créerait un cycle : 
             // ce ne serait donc plus un arbre.
             if (d.find(u.getNode()) != d.find(v.getNode())) {
