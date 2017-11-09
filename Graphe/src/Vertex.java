@@ -13,6 +13,12 @@ class Vertex {
     private float y;
     private Node n;
 
+    /**
+     * Constructeur
+     *
+     * @param x première coordonné.
+     * @param y deuxième coordonné.
+     */
     public Vertex(float x, float y) {
         this.x = x;
         this.y = y;
@@ -26,10 +32,20 @@ class Vertex {
         return this.n;
     }
 
+    /**
+     * @param a Un vertex
+     * @param b Un autre vertex
+     * @return le carré de la distance euclidienne entre a et b
+     */
     public static float simpleDistance(Vertex a, Vertex b) {
         return (float) (Math.pow((b.y - a.y), 2) + Math.pow((b.x - a.x), 2));
     }
 
+    /**
+     * @param a Un vertex
+     * @param b Un autre vertex
+     * @return la distance euclidienne entre a et b
+     */
     public static float euclideanDistance(Vertex a, Vertex b) {
         return (float) Math.sqrt(Vertex.simpleDistance(a, b));
     }

@@ -54,7 +54,7 @@ public class main {
         ArrayList<Edge> edges = new ArrayList<Edge>();
 
         for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
+            for (int j = i + 1; j < n; j++) {//à partir de i+1 car on a uniquement besoin d'un moitié de la matrice et on ignore également la diagonale
                 if (i == j) {
                     continue;
                 }

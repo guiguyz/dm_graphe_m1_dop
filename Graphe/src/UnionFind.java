@@ -21,7 +21,7 @@ class UnionFind {
 
     ArrayList<Node> rootNodes;
     
-    /*
+    /**
      * Prend une liste de n sommets et crée n ensembles sur cette liste.
      * @param vertices ArrayList<Vertex> ensemble des sommets du graphe
      */

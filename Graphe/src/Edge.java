@@ -17,14 +17,21 @@ class Edge implements Comparable {
     /**
      * Constructeur logique.
      *
-     * @param ligne la valeur de {@link Position#ligne}.
-     * @param colonne la valeur de {@link Position#colonne}.
+     * @param u Première extrémité de l'arête.
+     * @param v Seconde extrémité de l'arête.
      */
     public Edge(Vertex u, Vertex v) {
         this.u = u;
         this.v = v;
     }
 
+    /**
+     * Constructeur.
+     *
+     * @param u Première extrémité de l'arête.
+     * @param v Seconde extrémité de l'arête.
+     * @param w le poids de l'arête.
+     */
     public Edge(Vertex u, Vertex v, float w) {
         this(u, v);
         this.weight = w;
@@ -46,6 +53,12 @@ class Edge implements Comparable {
         return this.v;
     }
 
+
+    /**
+     *
+     * @param o un autre Edge avec lequel le comparer
+     * @return en int : -1 si l'autre Edge est de poids supérieur, 1 s'il est de poids inférieur et 0 si les poids sont égaux
+     */
     public int compareTo(Object o) {
         Edge other = (Edge) o;
 
