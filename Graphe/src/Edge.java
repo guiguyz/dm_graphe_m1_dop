@@ -2,7 +2,7 @@
 import java.util.List;
 
 
-/*
+/**
  * Classe représentant une arête unique, avec des pointeurs vers les sommets. 
  * cela inclut également des facilités pour calculer les poids des arêtes.
  *
@@ -14,6 +14,12 @@ class Edge implements Comparable {
     private float weight;
     private Vertex u, v;
 
+    /**
+     * Constructeur logique.
+     *
+     * @param ligne la valeur de {@link Position#ligne}.
+     * @param colonne la valeur de {@link Position#colonne}.
+     */
     public Edge(Vertex u, Vertex v) {
         this.u = u;
         this.v = v;

@@ -4,8 +4,8 @@ import java.util.*;
 @SuppressWarnings("unchecked")
 
 /**
- * Ce programme exÃ©cute l'algorithme de Kruskal, en utilisant une structure de
- * donnÃ©es efficace.
+ * Ce programme exécute l'algorithme de Kruskal, en utilisant une structure de
+ * données efficace.
  *
  * @author Benjamin Lemaitre
  * @author Guillaume Drouart
@@ -14,37 +14,65 @@ public class Kruskal {
 
     private ArrayList<Edge> tree;
 
+    
+    /**
+     * Constructeur logique.
+     *
+     * @param vertices ArrayList de Vertex (sommets).
+     * @param edges ArrayList de Edges (arêtes).
+     */
     public Kruskal(ArrayList<Vertex> vertices, ArrayList<Edge> edges) {
 
-        // CrÃ©er la partition dâ€™un ensemble 
+        // Créer la partition d'un ensemble 
         UnionFind d = new UnionFind(vertices);
 
-        // On crÃ©e une ArrayList d'arÃªte pour stocker l'ARPM
+        // On crée une ArrayList d'arète pour stocker l'ARPM
         tree = new ArrayList<Edge>();
 
-        // On trie les arÃªtes par ordre croissant (complexitÃ© en nlog(n))
+        // On trie les arêtes pour pouvoir les traiter 
+        // par ordre croissant de poids, car les arêtes de
+        // poids faible sont plus intéressantes(complexité en nlog(n))
         Collections.sort(edges);
 
-        /* Kruskal's algorithm */
+        // Dans l'ordre des poids des arêtes, on va regarder 
+        // si l'arête est à ajouter à l'ensemble
         for (Edge e : edges) {
             Vertex u = e.getU();
             Vertex v = e.getV();
-            //System.out.println("poids de l'arrete e : "+e.getWeight()+" entre (u,v) : ("+u.getNode().index+","+v.getNode().index+")");
+            // On vérifie que l'arête ne relie pas deux sommets 
+            // d'un même ensemble, car le résultat attendu est un ARPM 
+            // et une telle arête créerait un cycle : 
+            // ce ne serait donc plus un arbre.
             if (d.find(u.getNode()) != d.find(v.getNode())) {
-                /* Vertices v and u are not in the same component */
+                // Les sommets v et u ne sont pas dans le même composant
+                // Si les deux sommets sont déjà dans le même ensemble, 
+                // ils le sont grâce à des arrête de poids plus faible, 
+                // car on les traite par ordre croissant 
+                // donc il est inutile de chercher 
+                // à remplacer une autre arrête par celle-là.
+                
+                // L'arrête est à ajouter à l'ARPM 
+                // donc on l'ajoute à l'ensemble E
                 tree.add(e);
 
-                /* Union them in the tree */
-                d.union(u.getNode(), v.getNode());// getNode Parocurs de l'arbre
+                // On a gardé l'arête entre u et v donc 
+                // on fusionne les ensembles pour représenter ce lien
+                d.union(u.getNode(), v.getNode());
             }
         }
     }
 
+
+    /**
+     * Accesseur.
+     *
+     * @return On retourne l'ARPM (et on affiche ses arêtes et son coût)
+     */
     public ArrayList<Edge> getARPM() {
         
         float sum = 0;
         System.out.println("");
-        System.out.println("Voici l'ARPM GÃ©nÃ©rÃ© par Kruskal : ");
+        System.out.println("Voici l'ARPM Généré par Kruskal : ");
         System.out.println("");
         for (Edge e : tree) {
             System.out.println(e.getU().getNode().index + " " + e.getV().getNode().index);
@@ -53,7 +81,7 @@ public class Kruskal {
         }
 
         System.out.println("");
-        System.out.println("Le cout des Ã©lÃ©ments de l'ARPM est de : " + sum);
+        System.out.println("Le cout du parcours de l'ARPM est de : " + sum);
 
         
         return tree;
